@@ -1,2 +1,2 @@
-# maxwell
+# Maxwell
 Maxwell.
