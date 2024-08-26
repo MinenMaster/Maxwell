@@ -26,13 +26,23 @@
             font-size: 2rem;
             margin-bottom: 20px;
         }
-        button {
+        .custom-button {
             padding: 10px 20px;
             font-size: 1rem;
             cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 16px;
+            border: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+        .custom-button:hover {
+            background-color: #0056b3;
         }
         img {
-            display: none; /* Initially hide the GIF */
+            display: none;
             max-width: 100%;
             max-height: 100%;
         }
@@ -41,7 +51,7 @@
 <body>
     <div id="content">
         <div id="maxwellText">Maxwell?</div>
-        <button id="startButton">Click Me</button>
+        <div id="startButton" class="custom-button">Maxwell.</div>
     </div>
 
     <img id="maxwellGif" src="./maxwell.gif" alt="Centered Maxwell GIF">
