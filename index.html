@@ -5,29 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxwell.</title>
     <style>
-        /* CSS to center the GIF */
         body {
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: #ffffff;
         }
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        #maxwellText {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
         img {
+            display: none; /* Initially hide the GIF */
             max-width: 100%;
             max-height: 100%;
         }
     </style>
 </head>
 <body>
-    <img src="./maxwell.gif" alt="Centered Maxwell GIF">
+    <div id="content">
+        <div id="maxwellText">Maxwell?</div>
+        <button id="startButton">Click Me</button>
+    </div>
+
+    <img id="maxwellGif" src="./maxwell.gif" alt="Centered Maxwell GIF">
+
+    <!-- Audio element for continuous playback -->
+    <audio id="maxwellAudio" loop>
+        <source src="./maxwell.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
-        var maxwell = new Audio('./maxwell.mp3');
-        maxwell.play();
+        document.getElementById('startButton').addEventListener('click', function() {
+            // Hide the text and button
+            document.getElementById('content').style.display = 'none';
+            // Show the GIF
+            document.getElementById('maxwellGif').style.display = 'block';
+            // Play the audio
+            var audio = document.getElementById('maxwellAudio');
+            audio.play();
+        });
     </script>
 </body>
 </html>
