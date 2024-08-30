@@ -1,109 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxwell.</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            color: black;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        body.dark-mode {
-            background-color: #181818;
-            color: white;
-        }
-        #content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        #maxwellText {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .custom-button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            background-color: #e0e0e0;
-            color: black;
-            border-radius: 2px;
-            border: none;
-            text-align: center;
-            transition: background-color 0.3s ease;
-            user-select: none;
-        }
-        .custom-button:hover {
-            background-color: #d0d0d0;
-        }
-        img {
-            display: none;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        #darkModeToggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            background-color: #e0e0e0;
-            color: black;
-            border: 2px solid #007BFF;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        #darkModeToggle:hover {
-            background-color: #d0d0d0;
-        }
-        body.dark-mode .custom-button,
-        body.dark-mode #darkModeToggle {
-            background-color: #333;
-            color: white;
-            border-color: #aaa;
-        }
-        body.dark-mode .custom-button:hover,
-        body.dark-mode #darkModeToggle:hover {
-            background-color: #444;
-        }
-    </style>
-</head>
-<body>
-    <div id="content">
-        <div id="maxwellText">Maxwell?</div>
-        <div id="startButton" class="custom-button">Maxwell.</div>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Maxwell.</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #ffffff;
+                color: black;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+            body.dark-mode {
+                background-color: #181818;
+                color: white;
+            }
+            #content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            #maxwellText {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            .custom-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+                cursor: pointer;
+                background-color: #e0e0e0;
+                color: black;
+                border-radius: 2px;
+                border: none;
+                text-align: center;
+                transition: background-color 0.3s ease;
+                user-select: none;
+            }
+            .custom-button:hover {
+                background-color: #d0d0d0;
+            }
+            img {
+                display: none;
+                max-width: 100%;
+                max-height: 100%;
+            }
+            #darkModeToggle {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 5px 10px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                background-color: #e0e0e0;
+                color: black;
+                border: 2px solid #007bff;
+                border-radius: 5px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+            #darkModeToggle:hover {
+                background-color: #d0d0d0;
+            }
+            body.dark-mode .custom-button,
+            body.dark-mode #darkModeToggle {
+                background-color: #333;
+                color: white;
+                border-color: #aaa;
+            }
+            body.dark-mode .custom-button:hover,
+            body.dark-mode #darkModeToggle:hover {
+                background-color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div id="maxwellText">Maxwell?</div>
+            <div id="startButton" class="custom-button">Maxwell.</div>
+        </div>
 
-    <img id="maxwellGif" src="./maxwell.gif" alt="Centered Maxwell GIF">
+        <img id="maxwellGif" src="./maxwell.gif" alt="Centered Maxwell GIF" />
 
-    <!-- Audio element for continuous playback -->
-    <audio id="maxwellAudio" loop>
-        <source src="./maxwell.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <!-- <div id="darkModeToggle">Toggle Dark Mode</div> -->
+        <div id="darkModeToggle">
+            <svg width="30" height="30" id="light-icon" style="display: block">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
 
-    <script>
-        document.getElementById('startButton').addEventListener('click', function() {
-            // Hide the text and button
-            document.getElementById('content').style.display = 'none';
-            // Show the GIF
-            document.getElementById('maxwellGif').style.display = 'block';
-            // Play the audio
-            var audio = document.getElementById('maxwellAudio');
-            audio.play();
-        });
-    </script>
-</body>
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+            </svg>
+            <svg width="30" height="30" id="dark-icon" style="display: none">
+                <path
+                    fill="currentColor"
+                    d="
+          M 23, 5
+          A 12 12 0 1 0 23, 25
+          A 12 12 0 0 1 23, 5"
+                />
+            </svg>
+        </div>
+
+        <audio id="maxwellAudio" loop>
+            <source src="./maxwell.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+
+        <script>
+            const userPrefersDark =
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            if (userPrefersDark) {
+                document.body.classList.add("dark-mode");
+                document.getElementById("dark-icon").style.display = "block";
+                document.getElementById("light-icon").style.display = "none";
+            }
+
+            function updateIcons() {
+                const isDarkMode =
+                    document.body.classList.contains("dark-mode");
+                document.getElementById("dark-icon").style.display = isDarkMode
+                    ? "block"
+                    : "none";
+                document.getElementById("light-icon").style.display = isDarkMode
+                    ? "none"
+                    : "block";
+            }
+
+            document
+                .getElementById("darkModeToggle")
+                .addEventListener("click", function () {
+                    document.body.classList.toggle("dark-mode");
+                    updateIcons();
+                });
+
+            document
+                .getElementById("startButton")
+                .addEventListener("click", function () {
+                    document.getElementById("content").style.display = "none";
+                    document.getElementById("maxwellGif").style.display =
+                        "block";
+                    var audio = document.getElementById("maxwellAudio");
+                    audio.play();
+                });
+        </script>
+    </body>
 </html>
